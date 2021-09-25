@@ -9,13 +9,15 @@ int main()
     Sales_item currentItem;
     // check if transaction
     if (std::cin >> currentItem){
-        count += 1;
+        count += 1; // equivalent to ++count! :)
         // next transaction
         Sales_item transaction;
         while (std::cin >> transaction){
             // if item has the same isbn
             if (currentItem.isbn() == transaction.isbn()){
                 count += 1;
+                currentItem = transaction; // update current item
+                // (because though isbn's are equivalent, price&salescount may not be)
             } else{
                 // write previous isbn count to console
                 std::cout << "#transactions of isbn " 
